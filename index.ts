@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { configDotenv } from "dotenv";
 import { rateLimiterMiddleware } from "./Utils/ratelimitter";
+import router from "./Router/Routes/routes";
 
 configDotenv();
 
@@ -38,9 +39,7 @@ app.use(morgan("dev"));
 // Use compression middleware // compress the response based on the client's capabilities
 app.use(compression());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("hellpo");
-});
+app.use("/api/", router);
 
 app.listen(PORT, () => {
   console.log(
