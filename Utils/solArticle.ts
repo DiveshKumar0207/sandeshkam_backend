@@ -3,7 +3,7 @@ import anchor, {
   Program,
   setProvider,
   Idl,
-  Wallet,
+  Wallet,Coder
 } from "@coral-xyz/anchor";
 
 require("dotenv").config();
@@ -26,6 +26,8 @@ const connection = new anchor.web3.Connection("https://api.devnet.solana.com");
 // Create a Provider object with the connection and your keypair as the wallet
 const provider = new AnchorProvider(connection, new Wallet(keypair));
 setProvider(provider);
+
+
 
 
 const program = new anchor.Program(idl as Idl, provider, programId)
